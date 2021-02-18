@@ -1,10 +1,12 @@
 name: example
 on: push
+
 jobs:
   greeting:
     runs-on: ubuntu-latest
     steps:
       - run: echo hello world
+
   build_skim:
     runs-on: ubuntu-latest
     container: rootproject/root-conda:6.18.04
@@ -16,4 +18,5 @@ jobs:
         run: |
           COMPILER=$(root-config --cxx)
           FLAGS=$(root-config --cflags --libs)
-          $COMPILER -g -O3 -Wall -Wextra -Wpedantic -o skim skim.cxx
+          $COMPILER -g -O3 -Wall -Wextra -Wpedantic -o skim skim.cxx $FLAGS
+
