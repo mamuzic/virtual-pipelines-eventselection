@@ -83,13 +83,17 @@ jobs:
       - name: checkout repository
         uses: actions/checkout@v2
 
-      - name: Download from skim
+      - name: download from skim
         uses: actions/download-artifact@v2
         with:
           name: skim_ggH
-      - name: Downlaod from plot
+      - name: downlaod from plot
         uses: actions/download-artifact@v2
         with:
           name: histograms
   
+      - name: cutflow test
+        run: python tests/test_cutflow_ggH.py
 
+      - name: plot test
+        run: python tests/test_plot_ggH.py
